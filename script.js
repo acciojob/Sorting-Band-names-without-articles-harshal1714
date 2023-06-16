@@ -1,32 +1,26 @@
-let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
-let obj={};
-function check(str){
-if(str[0]=='T' && str[1]=='h' && str[2]=='e' && str[3]==' '){
-var res=str.slice(4);
-obj[res]=str;
-return res;
-}
-if(str[0]=='A'){
-if(str[1]==' '){
-var res=str.slice(2);
-obj[res]=str;
-return res;
-}
-if(str[1]=='n' && str[2]==' '){
-var res=str.slice(3);
-obj[res]=str;
-return res;
-}
-}
-obj[str]=str;
-return str;
-}
-for(let i=0;i<touristSpots.length;i++){
-touristSpots[i]=check(touristSpots[i]);
-// console.log(touristSpots[i]);
-}
-touristSpots.sort();
-for(let i=0;i<touristSpots.length;i++){
-touristSpots[i]=obj[touristSpots[i]];
-}
-console.log(touristSpots);
+const bandNames = ['The Beatles', 'Red Hot Chili Peppers', 'Metallica', 'Aerosmith', 'The Rolling Stones', 'Nirvana'];
+
+// Function to remove articles from the band names
+const removeArticles = (name) => {
+  // List of articles to be removed
+  const articles = ['the', 'a', 'an'];
+
+  // Convert the name to lowercase
+  const lowercaseName = name.toLowerCase();
+
+  // Check if the name starts with an article
+  for (let article of articles) {
+    if (lowercaseName.startsWith(article + ' ')) {
+      // Remove the article from the name
+      return name.substring(article.length + 1);
+    }
+  }
+
+  return name;
+};
+
+// Remove articles and sort the band names
+const sortedBandNames = bandNames.map(removeArticles).sort();
+
+// Print the sorted band names
+console.log(sortedBandNames);
